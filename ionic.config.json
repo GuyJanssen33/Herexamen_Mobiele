@@ -1,0 +1,7 @@
+{
+  "name": "Moestuin_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
