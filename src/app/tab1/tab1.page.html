@@ -1,17 +1,142 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+  <ion-header collapse="fade">
+    <ion-toolbar color="success">
+      <ion-title class="HeaderTitle">Moestuin app</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button>
+          <ion-button [routerLink]="['plant']" routerLinkActive="active">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="person-outline" onclick="OpenLoginWindow"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+
+
+    <ion-accordion-group>
+      <ion-accordion value="first" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Blad en steelgewassen</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of BladList">
+            <ion-item >
+              <ion-label>
+                 <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Knol- en wortelgewassen</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of KnolList">
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="third" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Ui-achtigen</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of UiList">
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="fourth" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Koolsoorten</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of KoolList">
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="fifth" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Peulvruchten</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of PeulList">
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="sixth" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Gebleekte Gewassen</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of GebleekteList" >
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="seventh" toggleIcon="caret-down-circle" toggleIconSlot="end">
+        <ion-item slot="header" color="light">
+          <ion-label>Vruchtgewassen</ion-label>
+        </ion-item>
+        <div slot="content">
+          <ion-list [inset]="true" *ngFor="let plant of VruchtList" >
+            <ion-item >
+              <ion-label>
+                <h2>{{plant.naam}}</h2>
+              </ion-label>
+              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
+                        color="warning"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-accordion>
+
+    </ion-accordion-group>
+  </ion-content>
+
+
+
+
