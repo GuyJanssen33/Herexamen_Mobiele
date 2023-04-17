@@ -1,17 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="success">
     <ion-title>
-      Tab 2
+      Plant Details
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-label>Naam:</ion-label>
+      <ion-input placeholder="Enter text"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-item>
+      <ion-label>Zaaitijd onder glas:</ion-label>
+      <ion-input  placeholder="1-100"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Zaaitijd Buiten:</ion-label>
+      <ion-input  value="1-100"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Oogsttijd:</ion-label>
+      <ion-input  placeholder="jan-dec"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tijd van zaaien tot kiem:</ion-label>
+      <ion-input  placeholder="aantal dagen"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tijd van zaaien tot oogst:</ion-label>
+      <ion-input  placeholder="aantal dagen"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Plantafstand in cm:</ion-label>
+      <ion-input  placeholder="1-100"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Details (weblink):</ion-label>
+      <ion-input  placeholder="URL"></ion-input>
+    </ion-item>
+
+
+
+  </ion-list>
 </ion-content>
