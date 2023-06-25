@@ -11,46 +11,6 @@ import {mergeMap, Observable, of} from "rxjs";
 export class Tab1Page  implements OnInit {
 
 
-
-//   get PeulList(): Array<Plant> {
-//     return this._PeulList;
-//   }
-//
-//   set PeulList(value: Array<Plant>) {
-//     this._PeulList = value;
-//   }
-//
-//   get KoolList(): Array<Plant> {
-//     return this._KoolList;
-//   }
-//
-//   set KoolList(value: Array<Plant>) {
-//     this._KoolList = value;
-//   }
-//
-//
-//   get BladList(): Array<Plant> {
-//     return this._BladList;
-//   }
-//
-//   set BladList(value: Array<Plant>) {
-//     this._BladList = value;
-//   }
-//   get KnolList() : Array<Plant> {
-//     return this._KnolList;
-//   }
-//
-//   set KnolList(value: Array<Plant>) {
-//     this._KnolList = value;
-//   }
-//
-// get UiList() : Array<Plant>{
-//     return this._UiList
-// }
-//
-// set UiList(value: Array<Plant>){
-//     this._UiList = value;
-// }
   public PlantList = this.ApiService.getPlant();
 
   public BladList: Array<Plant> = [];
