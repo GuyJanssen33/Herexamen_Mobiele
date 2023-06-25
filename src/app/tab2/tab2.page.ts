@@ -10,13 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Tab2Page implements OnInit {
 
+plant: any;
   setData(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id === null) {
       return;
     }
-    const plant = this.ApiService.getPlantById(id);
+    const gevraagdeplant = this.ApiService.getPlantById(id);
+if (gevraagdeplant !== null) {
+  this.plant = gevraagdeplant;
 
+}
 
   }
 
