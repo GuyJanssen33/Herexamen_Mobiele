@@ -8,9 +8,13 @@ const routes: Routes = [
     path: '',
     component: Tab1Page,
   },
-  {
-    path: 'Tab2Page/: id',
+  /*{
+    path: 'Tab2Page',
     loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+  },*/
+  {
+    path: 'details',
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   }
 ];
 
