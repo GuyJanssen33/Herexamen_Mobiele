@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import {DetailsPageRoutingModule} from "../tab1/details/details-routing.module";
 import {DetailsPageModule} from "../tab1/details/details.module";
+import {MylistPage} from "../tab1/mylist/mylist.page";
 
 const routes: Routes = [
   {

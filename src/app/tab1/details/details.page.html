@@ -1,53 +1,56 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="success">
     <ion-title>
-      Plant Details Guy
+      Plant Details
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-list>
     <ion-item>
       <ion-label>GuyJanssen:</ion-label>
-      <ion-input placeholder="Enter text">{{plant.naam}}</ion-input>
+      <ion-input placeholder="Enter text" [value]="plant?.naam || 'No name provided'" readonly></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd onder glas:</ion-label>
-      <ion-input  placeholder="1-100"></ion-input>
+      <ion-input  placeholder="1-100" [value]="plant?.zaaitijd || 'No name provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd Buiten:</ion-label>
-      <ion-input  value="1-100"></ion-input>
+      <ion-input  value="1-100" [value]="plant?.zaaitijdBuiten || 'No name provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Oogsttijd:</ion-label>
-      <ion-input  placeholder="jan-dec"></ion-input>
+      <ion-input  placeholder="jan-dec" [value]="plant?.oogsttijd || 'No name provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Tijd van zaaien tot kiem:</ion-label>
-      <ion-input  placeholder="aantal dagen"></ion-input>
+      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotKiem + ' dagen' || 'No name provided'"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Tijd van zaaien tot oogst:</ion-label>
-      <ion-input  placeholder="aantal dagen"></ion-input>
+      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotOogst + ' dagen'|| 'No name provided'"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Plantafstand in cm:</ion-label>
-      <ion-input  placeholder="1-100"></ion-input>
+      <ion-label>Plantafstand:</ion-label>
+      <ion-input  placeholder="1-100" [value]="plant?.plantafstand + ' cm'|| 'No name provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Details (weblink):</ion-label>
-      <ion-input  placeholder="URL"></ion-input>
+      <ion-input  >
+        <a *ngIf="'linkUrl'|| 'No link available'" [href]="plant?.details" target="_blank">{{plant?.details}}</a>
+      </ion-input>
     </ion-item>
 
-
-
   </ion-list>
+  <ion-button expand="full" shape="round">Add to list</ion-button>
+
 </ion-content>
 

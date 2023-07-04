@@ -8,7 +8,7 @@ import {Plant} from "../Datatypes/Plant";
 })
 export class ApiService {
 
-  /*readonly #apiKey = environment.theOneApiKey;*/
+
   readonly #baseURL = 'https://api-production-f861.up.railway.app/moestuin';
 
   constructor(private httpClient: HttpClient) {

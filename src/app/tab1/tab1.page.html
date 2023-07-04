@@ -25,11 +25,11 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of BladList" >
-            <ion-item button [routerLink]="['Tab2Page/:plant.Id']">
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                  <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['details']">
+              <ion-icon name="star" slot="end" >
                         color="warning"></ion-icon>
             </ion-item>
 
@@ -42,7 +42,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of KnolList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
@@ -59,7 +59,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of UiList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
@@ -75,7 +75,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of KoolList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
@@ -91,7 +91,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of PeulList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
@@ -107,7 +107,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of GebleekteList" >
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
@@ -123,7 +123,7 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of VruchtList" >
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
