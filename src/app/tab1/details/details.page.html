@@ -4,7 +4,7 @@
       Plant Details
     </ion-title>
     <ion-buttons slot="primary">
-    <ion-button [routerLink]="['favorieten']" routerLinkActive="active">
+    <ion-button [routerLink]="['/favorieten']" routerLinkActive="active">
       <!--<ion-icon name="add-outline"></ion-icon>-->
       <ion-label >Favorieten</ion-label>
     </ion-button>
@@ -56,7 +56,7 @@
     </ion-item>
 
   </ion-list>
-  <ion-button expand="full" shape="round">Add to list</ion-button>
+  <ion-button expand="full" shape="round" [routerLink]="['/favorieten', plant?._id]">Add to list </ion-button>
 
 </ion-content>
 

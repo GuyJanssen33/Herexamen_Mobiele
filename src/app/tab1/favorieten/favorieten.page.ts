@@ -10,26 +10,40 @@ import {IdService} from "../../services/id.service"
   styleUrls: ['favorieten.page.scss'],
 })
 export class FavorietenPage implements OnInit {
-  public plant?:Plant;
+  public plant?:Plant | any;
   public FavorietenList: Array<Plant> = [];
-  public receivedId: string;
+ /* public receivedId: string;*/
   public linkUrl: string|any= this.plant?.details
-  constructor(public idService:IdService, public ApiService: ApiService,public activatedRoute: ActivatedRoute,
-              public FavoritenList: ListService) {
-    this.receivedId = this.idService.id;
-
-  }
+  constructor(public idService:IdService,
+              public ApiService: ApiService,
+              public activatedRoute: ActivatedRoute,
+              public route:ActivatedRoute,
+              public listService: ListService) {}
 
   ngOnInit(): void {
     this.setData();
-    this.getPlant();
+    /*this.getPlant();*/
+    /*const objectData = history.state.objectData;*/
+    /*const favPlant = objectData;*/
+    console.log(this.FavorietenList);
+    console.log(this.FavorietenList.length);
+
   }
 
-  getPlant(): void {
-    if (this.receivedId != null){
+  /*getPlant(): void {
+    const objectData = history.state.objectData
+    this.plant = objectData;
+    if (objectData != null){
       this.ApiService.getPlantById(this.receivedId)
         .subscribe(plant => {this.FavorietenList.push(plant);});
+      console.log(this.FavorietenList);
     }
+  }*/
+
+  addToList():void {
+    this.listService.addObject(this.plant);
+    this.listService.getList().subscribe(list => this.FavorietenList = list);
+    console.log(this.FavorietenList);
   }
   setData(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -48,8 +62,12 @@ export class FavorietenPage implements OnInit {
         this.plant.categorie = plant.categorie;
         this.plant.details = plant.details;
         this.linkUrl = this.plant.details;
-        this.receivedId = id;
-        console.log(plant)
+        /*this.receivedId = id;*/
+        this.FavorietenList.push(this.plant);
+        this.addToList();
+
+        console.log(this.FavorietenList)
+        console.log(this.FavorietenList.length)
       });
 
 

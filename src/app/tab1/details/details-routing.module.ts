@@ -10,10 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'favorieten',
+    component: FavorietenPage,
     loadChildren: () => import('../favorieten/favorieten.module').then( m => m.FavorietenPageModule)
   },{
     path: 'favorieten/:id',
-    component: FavorietenPageModule,
+    component: FavorietenPage,
     loadChildren: () => import('../favorieten/favorieten.module').then( m => m.FavorietenPageModule)
   },
 ];

@@ -16,7 +16,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-content>
-    <ion-label>Received ID: {{ receivedId }}</ion-label>
-  </ion-content>
+  <ion-list [inset]="true" *ngFor="let plant of FavorietenList" >
+    <ion-item button >
+      <ion-label>
+        <h2>{{plant.naam}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>    <!--<ion-label>Received ID: {{ receivedId }}</ion-label>-->
+ <!-- <h2 >{{plant?.naam}}</h2>
+  <ion-input [value]="plant?.naam || 'Hier komt een lijst'"></ion-input>-->
+  <ion-list [inset]="true" *ngFor="let plant of FavorietenList" >
+      <ion-label >
+        <h2 >{{plant.naam}}</h2>
+      </ion-label>
+  </ion-list>
 </ion-content>
