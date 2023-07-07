@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Tab1Page } from './tab1.page';
 import {Tab1PageModule} from "./tab1.module";
 import {DetailsPage} from "./details/details.page";
+import {FavorietenPageModule} from "./favorieten/favorieten.module";
 
 const routes: Routes = [
   {
@@ -21,7 +22,16 @@ const routes: Routes = [
     path: 'details/:id',
     component: DetailsPage,
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
-  }
+  },
+  {
+    path: 'favorieten',
+    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule)
+  },{
+    path: 'favorieten/:id',
+    component: FavorietenPageModule,
+    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule)
+  },
+
 ];
 
 @NgModule({

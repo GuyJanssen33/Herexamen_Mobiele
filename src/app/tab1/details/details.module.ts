@@ -6,6 +6,7 @@ import { DetailsPageRoutingModule } from './details-routing.module';
 import { DetailsPage } from './details.page';
 import {HttpClientModule} from "@angular/common/http";
 import {ExploreContainerComponentModule} from "../../explore-container/explore-container.module";
+import {FavorietenPageModule} from "../favorieten/favorieten.module";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {ExploreContainerComponentModule} from "../../explore-container/explore-c
     FormsModule,
     ExploreContainerComponentModule,
     DetailsPageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FavorietenPageModule
   ],
   declarations: [DetailsPage]
 })

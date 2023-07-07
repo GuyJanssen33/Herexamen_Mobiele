@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Plant} from "../Datatypes/Plant";
 import {ApiService} from "../services/api.service";
 import {mergeMap, Observable, of} from "rxjs";
+import {IdService} from "../services/id.service";
+
 
 @Component({
   selector: 'app-tab1',
@@ -10,7 +12,7 @@ import {mergeMap, Observable, of} from "rxjs";
 })
 export class Tab1Page  implements OnInit {
 
-
+  public newFavorite : any;
   public PlantList = this.ApiService.getPlant();
 
   public BladList: Array<Plant> = [];
@@ -22,7 +24,9 @@ export class Tab1Page  implements OnInit {
   public VruchtList: Array<Plant> = [];
   // Plant: Plant;
   plant: any;
-  constructor( public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
+
+  isClicked: boolean = false;
+  constructor( public idService:IdService, public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
     p => {
       switch(p.categorie) {
         case "Blad- en steelgewassen": {
@@ -55,7 +59,18 @@ export class Tab1Page  implements OnInit {
         }
       }}));
     console.log(this.BladList, "test", this.VruchtList);
+
     }
+
+  toggleClick() {
+    this.isClicked = !this.isClicked;
+  }
+  sendId(_id:string) {
+    console.log(_id)
+    const id: string =_id
+    this.idService.id
+    console.log('ID:',id)
+  }
 
   ngOnInit():void{}
 

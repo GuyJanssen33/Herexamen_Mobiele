@@ -3,6 +3,12 @@
     <ion-title>
       Plant Details
     </ion-title>
+    <ion-buttons slot="primary">
+    <ion-button [routerLink]="['favorieten']" routerLinkActive="active">
+      <!--<ion-icon name="add-outline"></ion-icon>-->
+      <ion-label >Favorieten</ion-label>
+    </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,35 +17,35 @@
   <ion-list>
     <ion-item>
       <ion-label>GuyJanssen:</ion-label>
-      <ion-input placeholder="Enter text" [value]="plant?.naam || 'No name provided'" readonly></ion-input>
+      <ion-input placeholder="Enter text" [value]="plant?.naam || 'No value provided'" readonly></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd onder glas:</ion-label>
-      <ion-input  placeholder="1-100" [value]="plant?.zaaitijd || 'No name provided'"></ion-input>
+      <ion-input  placeholder="1-100" [value]="plant?.zaaitijd || 'No value provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd Buiten:</ion-label>
-      <ion-input  value="1-100" [value]="plant?.zaaitijdBuiten || 'No name provided'"></ion-input>
+      <ion-input  value="1-100" [value]="plant?.zaaitijdBuiten || 'No value provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Oogsttijd:</ion-label>
-      <ion-input  placeholder="jan-dec" [value]="plant?.oogsttijd || 'No name provided'"></ion-input>
+      <ion-input  placeholder="jan-dec" [value]="plant?.oogsttijd || 'No value provided'"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Tijd van zaaien tot kiem:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotKiem + ' dagen' || 'No name provided'"></ion-input>
+      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotKiem + ' dagen' || 'No value provided'"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Tijd van zaaien tot oogst:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotOogst + ' dagen'|| 'No name provided'"></ion-input>
+      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotOogst + ' dagen'|| 'No value provided'"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Plantafstand:</ion-label>
-      <ion-input  placeholder="1-100" [value]="plant?.plantafstand + ' cm'|| 'No name provided'"></ion-input>
+      <ion-input  placeholder="1-100" [value]="plant?.plantafstand + ' cm'|| 'No value provided'"></ion-input>
     </ion-item>
 
     <ion-item>

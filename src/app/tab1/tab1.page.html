@@ -4,11 +4,10 @@
     <ion-toolbar color="success">
       <ion-title class="HeaderTitle">Moestuin app</ion-title>
       <ion-buttons slot="primary">
-        <ion-button>
-          <ion-button [routerLink]="['plant']" routerLinkActive="active">
-            <ion-icon name="add-outline"></ion-icon>
+          <ion-button [routerLink]="['favorieten']" routerLinkActive="active">
+            <!--<ion-icon name="add-outline"></ion-icon>-->
+            <ion-label >Favorieten</ion-label>
           </ion-button>
-        </ion-button>
         <ion-button>
           <ion-icon name="person-outline" onclick="OpenLoginWindow"></ion-icon>
         </ion-button>
@@ -27,12 +26,9 @@
           <ion-list [inset]="true" *ngFor="let plant of BladList" >
             <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
-                 <h2>{{plant.naam}}</h2>
+                <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" >
-                        color="warning"></ion-icon>
             </ion-item>
-
           </ion-list>
         </div>
       </ion-accordion>
@@ -46,10 +42,7 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
-
           </ion-list>
         </div>
       </ion-accordion>
@@ -63,8 +56,7 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
+
             </ion-item>
           </ion-list>
         </div>
@@ -79,8 +71,6 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -95,8 +85,6 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -111,8 +99,6 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -127,8 +113,6 @@
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>

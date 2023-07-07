@@ -16,6 +16,10 @@ export interface PlantList {
   Plant: Plant[];
 }
 
+export interface FavorietenList {
+  Plant: Plant[];
+}
+
 export interface BladList {
   Plant: Plant[];
 }
