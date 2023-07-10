@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Plant} from "../Datatypes/Plant";
 import {ApiService} from "../services/api.service";
 import {mergeMap, Observable, of} from "rxjs";
-import {IdService} from "../services/id.service";
+
 
 
 @Component({
@@ -26,7 +26,7 @@ export class Tab1Page  implements OnInit {
   plant: any;
 
   isClicked: boolean = false;
-  constructor( public idService:IdService, public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
+  constructor( public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
     p => {
       switch(p.categorie) {
         case "Blad- en steelgewassen": {
@@ -68,7 +68,6 @@ export class Tab1Page  implements OnInit {
   sendId(_id:string) {
     console.log(_id)
     const id: string =_id
-    this.idService.id
     console.log('ID:',id)
   }
 

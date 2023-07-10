@@ -56,7 +56,7 @@
     </ion-item>
 
   </ion-list>
-  <ion-button expand="full" shape="round" [routerLink]="['/favorieten', plant?._id]">Add to list </ion-button>
+  <ion-button expand="full" shape="round" (click)="AddPlantToFavorietenList()">Add to list </ion-button>
 
 </ion-content>
 

@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Plant} from "../../Datatypes/Plant";
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-
+import {FavorietenService} from "../../services/favorieten.service";
 
 @Component({
   selector: 'app-tab1-details',
@@ -19,11 +19,19 @@ export class DetailsPage implements OnInit {
   public linkUrl: string|any= this.plant?.details
   constructor(public router: Router,
               public ApiService: ApiService,
+              public favorietenservice: FavorietenService,
               public activatedRoute: ActivatedRoute,
               public navCtrl: NavController) {}
 
   ngOnInit(): void {
     this.setData();
+  }
+
+  AddPlantToFavorietenList(): void {
+
+    const id : string|any = this.plant?._id;
+
+    this.favorietenservice.mijnFavorieten.push(id);
   }
 
   navigateToFavorietenPage() {

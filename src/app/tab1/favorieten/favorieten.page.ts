@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Plant} from "../../Datatypes/Plant";
 import {ApiService} from "../../services/api.service";
-import {ListService} from "../../services/Favorieten.service";
-import {IdService} from "../../services/id.service"
+import {FavorietenService} from "../../services/favorieten.service"
+
 @Component({
   selector: 'app-tab1-favorieten',
   templateUrl: 'favorieten.page.html',
@@ -11,43 +11,33 @@ import {IdService} from "../../services/id.service"
 })
 export class FavorietenPage implements OnInit {
   public plant?:Plant | any;
-  public FavorietenList: Array<Plant> = [];
- /* public receivedId: string;*/
+  public favorietenList = this.favorietenService.mijnFavorieten;
+  public favorietePlanten: Array<Plant> = [];
   public linkUrl: string|any= this.plant?.details
-  constructor(public idService:IdService,
+  constructor(
               public ApiService: ApiService,
               public activatedRoute: ActivatedRoute,
               public route:ActivatedRoute,
-              public listService: ListService) {}
+              public favorietenService: FavorietenService) {}
 
   ngOnInit(): void {
-    this.setData();
-    /*this.getPlant();*/
-    /*const objectData = history.state.objectData;*/
-    /*const favPlant = objectData;*/
-    console.log(this.FavorietenList);
-    console.log(this.FavorietenList.length);
+    this.getList()
+   this.favorietenList.forEach((id => {this.getPlants(id)}))
 
   }
 
-  /*getPlant(): void {
-    const objectData = history.state.objectData
-    this.plant = objectData;
-    if (objectData != null){
-      this.ApiService.getPlantById(this.receivedId)
-        .subscribe(plant => {this.FavorietenList.push(plant);});
-      console.log(this.FavorietenList);
+getList(): void {
+  this.favorietenList = this.favorietenService.mijnFavorieten;
+}
+
+plantToList(): void {
+    if (this.favorietePlanten.includes(this.plant)) {
+      this.favorietePlanten.push(this.plant);
     }
-  }*/
+}
+  getPlants(id:string): void {
 
-  addToList():void {
-    this.listService.addObject(this.plant);
-    this.listService.getList().subscribe(list => this.FavorietenList = list);
-    console.log(this.FavorietenList);
-  }
-  setData(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id != null) {
+    if (id != null){
       this.ApiService.getPlantById(id).subscribe(plant => {
         this.plant = plant;
         this.plant._id = plant._id;
@@ -62,16 +52,12 @@ export class FavorietenPage implements OnInit {
         this.plant.categorie = plant.categorie;
         this.plant.details = plant.details;
         this.linkUrl = this.plant.details;
-        /*this.receivedId = id;*/
-        this.FavorietenList.push(this.plant);
-        this.addToList();
 
-        console.log(this.FavorietenList)
-        console.log(this.FavorietenList.length)
-      });
+          this.favorietePlanten.push(this.plant);
 
+        console.log (this.favorietePlanten);
 
-    }
+  });
 
 
-}}
+    }}}
