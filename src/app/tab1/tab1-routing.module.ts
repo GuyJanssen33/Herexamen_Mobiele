@@ -5,6 +5,8 @@ import {Tab1PageModule} from "./tab1.module";
 import {DetailsPage} from "./details/details.page";
 import {FavorietenPageModule} from "./favorieten/favorieten.module";
 import {FavorietenPage} from "./favorieten/favorieten.page";
+import {AddplantPageModule} from "./addplant/addplant.module";
+import {AddplantPage} from "./addplant/addplant.page";
 const routes: Routes = [
   {
     path: '',
@@ -31,6 +33,11 @@ const routes: Routes = [
     path: 'favorieten/:id',
     component: FavorietenPage,
     loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule)
+  },
+  {
+    path: 'addplant',
+    component: AddplantPage,
+    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule)
   },
 
 ];

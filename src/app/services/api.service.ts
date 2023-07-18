@@ -21,4 +21,8 @@ export class ApiService {
   getPlantById(id: string): Observable<Plant> {
     return  this.httpClient.get<Plant>(`${this.#baseURL}/${id}`);
   }
+
+  addPlant(plant: Plant): Observable<Plant> {
+    return this.httpClient.post<Plant>(`${this.#baseURL}`, plant);
+  }
 }
