@@ -17,12 +17,12 @@
   <ion-list>
     <ion-item>
       <ion-label>Naam:</ion-label>
-      <ion-input placeholder="Naam plant" [value]="naam"  ></ion-input>
+      <ion-input placeholder="Naam plant"  [(ngModel)]="naam" ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Categorie:</ion-label>
-      <ion-select placeholder="Selecteer categorie" >
+      <ion-select placeholder="Selecteer categorie" [(ngModel)]="categorie">
         <ion-select-option value="Blad- en steelgewassen">Blad- en steelgewassen</ion-select-option>
         <ion-select-option value="Knol- en wortelgewassen">Knol- en wortelgewassen</ion-select-option>
         <ion-select-option value="Ui-achtigen">Ui-achtigen</ion-select-option>
@@ -36,36 +36,37 @@
 
     <ion-item>
       <ion-label>Zaaitijd onder glas:</ion-label>
-      <ion-input  placeholder="jan-dec" [value]="zaaitijd"></ion-input>
+      <ion-input  placeholder="jan-dec"  [(ngModel)]="zaaitijd"></ion-input>
     </ion-item>
 
 
     <ion-item>
       <ion-label>Zaaitijd Buiten:</ion-label>
-      <ion-input  placeholder="jan-dec" [value]="zaaitijdBuiten" ></ion-input>
+      <ion-input  placeholder="jan-dec"   [(ngModel)]="zaaitijdBuiten"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Oogsttijd:</ion-label>
-      <ion-input  placeholder="jan-dec" [value]="oogsttijd" ></ion-input>
+      <ion-input  placeholder="jan-dec"  [(ngModel)]="oogsttijd"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Tijd van zaaien tot kiem:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="zaaienTotKiem" ></ion-input>
+      <ion-input  placeholder="aantal dagen"  [(ngModel)]="zaaienTotKiem"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Tijd van zaaien tot oogst:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="zaaienTotOogst"></ion-input>
+      <ion-input  placeholder="aantal dagen"  [(ngModel)]="zaaienTotOogst"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Plantafstand:</ion-label>
-      <ion-input  placeholder="afstand in cm" [value]="plantafstand"></ion-input>
+      <ion-input  placeholder="afstand in cm"
+                  [(ngModel)]="plantafstand"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Details (weblink):</ion-label>
-      <ion-input  [value]="zaaienTotOogst" placeholder="weblink">
+      <ion-input  [value]="details" placeholder="weblink" [(ngModel)]="details">
 
       </ion-input>
     </ion-item>

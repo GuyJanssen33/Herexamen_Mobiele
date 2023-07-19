@@ -1,37 +1,43 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../services/api.service";
-import {Plant} from "../Datatypes/Plant";
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page implements OnInit {
+export class Tab2Page {
+  cityName = '';
+  weatherData: any;
+  weatherForecast: any[] =[];
 
-plant: any;
-  setData(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id === null) {
-      return;
+
+  constructor(private weatherService: WeatherService) {}
+
+  getWeather() {
+    if (this.cityName) {
+      this.weatherService.getWeatherData(this.cityName).subscribe(
+        (data: any) => {
+          this.weatherData = data;
+          console.log('Weather Data:', this.weatherData);
+        },
+        (error: any) => {
+          console.error('Error fetching weather data:', error);
+        }
+      );
+
+      this.weatherService.getWeatherForecast(this.cityName).subscribe(
+        (data:any) => {
+          this.weatherForecast = data.list;
+          console.log('Weather Forecast:', this.weatherForecast);
+
+
+        },
+        (error:any) => {
+          console.error('Error fetching weather forecast:', error);
+        }
+      );
     }
-    const gevraagdeplant = this.ApiService.getPlantById(id);
-if (gevraagdeplant !== null) {
-  this.plant = gevraagdeplant;
-
-}
-
-  }
-
-
-
-
-  constructor( public ApiService: ApiService,  public activatedRoute: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    this.setData();
   }
 
 }
-

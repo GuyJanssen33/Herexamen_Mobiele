@@ -13,9 +13,21 @@ import {FavorietenService} from "../../services/favorieten.service";
 })
 export class DetailsPage implements OnInit {
 
-  public plant?:Plant;
+  public plant?:Plant|any;
   public favPlant?:Plant = this.plant;
 
+
+  public naam: string|any = this.plant?.naam;
+  public _id: string|any = this.plant?._id;
+  public Id: number|any = this.plant?.Id;
+  public zaaitijd: string|any = this.plant?.zaaitijd;
+  public zaaitijdBuiten: string|any = this.plant?.zaaitijdBuiten;
+  public oogsttijd: string|any = this.plant?.oogsttijd;
+  public zaaienTotKiem: string|any = this.plant?.zaaienTotKiem;
+  public zaaienTotOogst: string|any = this.plant?.zaaienTotOogst;
+  public plantafstand: string|any = this.plant?.plantafstand;
+  public categorie: string|any = this.plant?.categorie;
+  public details: string|any = this.plant?.details;
   public linkUrl: string|any= this.plant?.details
   constructor(public router: Router,
               public ApiService: ApiService,
@@ -34,6 +46,29 @@ export class DetailsPage implements OnInit {
     this.favorietenservice.mijnFavorieten.push(id);
   }
 
+  updatePlant(plant: Plant): void {
+    const newPlant: Plant = {
+      _id: this._id,
+      Id: this.Id,
+      naam: this.naam ,
+      zaaitijd: this.zaaitijd,
+      zaaitijdBuiten: this.zaaitijdBuiten,
+      oogsttijd: this.oogsttijd,
+      zaaienTotKiem: this.zaaienTotKiem,
+      zaaienTotOogst: this.zaaienTotOogst,
+      plantafstand: this.plantafstand,
+      categorie: this.categorie,
+      details: this.details,
+    };
+    console.log(newPlant);
+    this.ApiService.updatePlant(newPlant).subscribe(
+      response => {console.log('Plant succesvol toegevoegd: ', response);
+      },
+      error => {
+        console.log('Er is een fout opgetreden: ', error);
+      }
+    );
+  }
   navigateToFavorietenPage() {
     const myObject = { favPlant: this.plant};
     this.navCtrl.navigateForward('favorieten', );
@@ -43,17 +78,17 @@ export class DetailsPage implements OnInit {
     if (id != null){
       this.ApiService.getPlantById(id).subscribe(plant => {
         this.plant = plant;
-        this.plant._id = plant._id;
-        this.plant.Id = plant.Id;
-        this.plant.naam = plant.naam;
-        this.plant.zaaitijd = plant.zaaitijd;
-        this.plant.zaaitijdBuiten = plant.zaaitijdBuiten;
-        this.plant.oogsttijd = plant.oogsttijd;
-        this.plant.zaaienTotKiem = plant.zaaienTotKiem;
-        this.plant.zaaienTotOogst = plant.zaaienTotOogst;
-        this.plant.plantafstand = plant.plantafstand;
-        this.plant.categorie = plant.categorie;
-        this.plant.details = plant.details;
+        this._id = plant._id;
+        this.Id = plant.Id;
+        this.naam = plant.naam;
+        this.zaaitijd = plant.zaaitijd;
+        this.zaaitijdBuiten = plant.zaaitijdBuiten;
+        this.oogsttijd = plant.oogsttijd;
+        this.zaaienTotKiem = plant.zaaienTotKiem;
+        this.zaaienTotOogst = plant.zaaienTotOogst;
+        this.plantafstand = plant.plantafstand;
+        this.categorie = plant.categorie;
+        this.details = plant.details;
         this.linkUrl = this.plant.details;
 
       });

@@ -39,6 +39,11 @@ const routes: Routes = [
     component: AddplantPage,
     loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule)
   },
+  {
+    path: 'addplant/:id',
+    component: AddplantPage,
+    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule)
+  },
 
 ];
 

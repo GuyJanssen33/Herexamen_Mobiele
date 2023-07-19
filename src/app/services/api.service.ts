@@ -23,6 +23,10 @@ export class ApiService {
   }
 
   addPlant(plant: Plant): Observable<Plant> {
-    return this.httpClient.post<Plant>(`${this.#baseURL}`, plant);
+    return this.httpClient.post<Plant>(`${this.#baseURL}/create`, plant);
+  }
+
+  updatePlant(plant: Plant): Observable<Plant> {
+    return this.httpClient.put<Plant>(`${this.#baseURL}/update/${plant._id}`, plant);
   }
 }

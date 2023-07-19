@@ -71,6 +71,8 @@ export class Tab1Page  implements OnInit {
     console.log('ID:',id)
   }
 
-  ngOnInit():void{}
+  ngOnInit():void{
+    this.PlantList = this.ApiService.getPlant();
+  }
 
 }

@@ -15,7 +15,7 @@ export class AddplantPage implements OnInit {
 
   public highestValue: number|any;
   public plant?:Plant | any;
-  _id: string | any= "";
+  _id: string | any= null;
   id:number | any;
   naam: string | any;
   categorie: string | any;
@@ -34,7 +34,7 @@ export class AddplantPage implements OnInit {
 
   addPlant(plant: Plant): void {
     const newPlant: Plant = {
-      _id: "",
+      _id: this._id,
       Id: this.id,
       naam: this.naam,
       zaaitijd: this.zaaitijd,
@@ -60,10 +60,43 @@ export class AddplantPage implements OnInit {
   async ngOnInit() {
     const Plantlist: Plant[]|any = await this.ApiService.getPlant().toPromise();
     this.highestValue = this.findHighestValue(Plantlist);
+    this.setData();
   }
 
   findHighestValue(Plantlist: Plant[]): number {
     return this.highestValue = Plantlist.reduce((maxValue, plant) => plant.Id > maxValue ? plant.Id : maxValue, 0) + 1;
   }
 
+  setData(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id != null) {
+      this.ApiService.getPlantById(id).subscribe(plant => {
+        this.plant = plant;
+        this._id = plant._id;
+        this.id = plant.Id;
+        this.naam = plant.naam;
+        this.zaaitijd = plant.zaaitijd;
+        this.zaaitijdBuiten = plant.zaaitijdBuiten;
+        this.oogsttijd = plant.oogsttijd;
+        this.zaaienTotKiem = plant.zaaienTotKiem;
+        this.zaaienTotOogst = plant.zaaienTotOogst;
+        this.plantafstand = plant.plantafstand;
+        this.categorie = plant.categorie;
+        this.details = plant.details;
+      });
+    } else {
+      _id: null;
+      id: null;
+      naam: null;
+      zaaitijd: null;
+      zaaitijdBuiten: null;
+      oogsttijd: null;
+      zaaienTotKiem: null;
+      zaaienTotOogst: null;
+      plantafstand: null;
+      categorie: null;
+      details: null;
+
+    }
+  }
 }

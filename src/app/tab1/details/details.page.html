@@ -4,6 +4,10 @@
       Plant Details
     </ion-title>
     <ion-buttons slot="primary">
+      <ion-button [routerLink]="['']" routerLinkActive="active">
+        <!--<ion-icon name="add-outline"></ion-icon>-->
+        <ion-label >Home</ion-label>
+      </ion-button>
     <ion-button [routerLink]="['/favorieten']" routerLinkActive="active">
       <!--<ion-icon name="add-outline"></ion-icon>-->
       <ion-label >Favorieten</ion-label>
@@ -16,47 +20,52 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>GuyJanssen:</ion-label>
-      <ion-input placeholder="Enter text" [value]="plant?.naam || 'No value provided'" readonly></ion-input>
+      <ion-label>Naam:</ion-label>
+      <ion-input placeholder="Enter text" [(ngModel)]="naam "></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categorie:</ion-label>
+      <ion-input placeholder="Enter text" [(ngModel)]="categorie "></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd onder glas:</ion-label>
-      <ion-input  placeholder="1-100" [value]="plant?.zaaitijd || 'No value provided'"></ion-input>
+      <ion-input  placeholder="1-100" [(ngModel)]="zaaitijd"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Zaaitijd Buiten:</ion-label>
-      <ion-input  value="1-100" [value]="plant?.zaaitijdBuiten || 'No value provided'"></ion-input>
+      <ion-input  value="1-100" [(ngModel)]="zaaitijdBuiten"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Oogsttijd:</ion-label>
-      <ion-input  placeholder="jan-dec" [value]="plant?.oogsttijd || 'No value provided'"></ion-input>
+      <ion-input  placeholder="jan-dec" [(ngModel)]="oogsttijd"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Tijd van zaaien tot kiem:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotKiem + ' dagen' || 'No value provided'"></ion-input>
+      <ion-input  placeholder="aantal dagen" [(ngModel)]="zaaienTotKiem"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Tijd van zaaien tot oogst:</ion-label>
-      <ion-input  placeholder="aantal dagen" [value]="plant?.zaaienTotOogst + ' dagen'|| 'No value provided'"></ion-input>
+      <ion-input  placeholder="aantal dagen" [(ngModel)]="zaaienTotOogst"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Plantafstand:</ion-label>
-      <ion-input  placeholder="1-100" [value]="plant?.plantafstand + ' cm'|| 'No value provided'"></ion-input>
+      <ion-input  placeholder="1-100" [(ngModel)]="plantafstand"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Details (weblink):</ion-label>
       <ion-input  >
-        <a *ngIf="'linkUrl'|| 'No link available'" [href]="plant?.details" target="_blank">{{plant?.details}}</a>
+        <a *ngIf="'linkUrl'|| 'No link available'" [href]="details" target="_blank" [(ngModel)]="details"></a>
       </ion-input>
     </ion-item>
 
   </ion-list>
-  <ion-button expand="full" shape="round" (click)="AddPlantToFavorietenList()">Add to list </ion-button>
-
+  <ion-button expand="full" shape="round" (click)="AddPlantToFavorietenList()">Voeg toe aan favorieten </ion-button>
+  <ion-button expand="full" shape="round" (click)="updatePlant(plant)">Plant aanpassen </ion-button>
 </ion-content>
 
