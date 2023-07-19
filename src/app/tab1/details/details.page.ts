@@ -17,18 +17,18 @@ export class DetailsPage implements OnInit {
   public favPlant?:Plant = this.plant;
 
 
-  public naam: string|any = this.plant?.naam;
-  public _id: string|any = this.plant?._id;
-  public Id: number|any = this.plant?.Id;
-  public zaaitijd: string|any = this.plant?.zaaitijd;
-  public zaaitijdBuiten: string|any = this.plant?.zaaitijdBuiten;
-  public oogsttijd: string|any = this.plant?.oogsttijd;
-  public zaaienTotKiem: string|any = this.plant?.zaaienTotKiem;
-  public zaaienTotOogst: string|any = this.plant?.zaaienTotOogst;
-  public plantafstand: string|any = this.plant?.plantafstand;
-  public categorie: string|any = this.plant?.categorie;
-  public details: string|any = this.plant?.details;
-  public linkUrl: string|any= this.plant?.details
+  public naam: string|any ;
+  public _id: string|any ;
+  public Id: number|any ;
+  public zaaitijd: string|any ;
+  public zaaitijdBuiten: string|any ;
+  public oogsttijd: string|any ;
+  public zaaienTotKiem: string|any ;
+  public zaaienTotOogst: string|any ;
+  public plantafstand: string|any  ;
+  public categorie: string|any ;
+  public details: string|any ;
+  public linkUrl: string|any;
   constructor(public router: Router,
               public ApiService: ApiService,
               public favorietenservice: FavorietenService,
@@ -62,7 +62,18 @@ export class DetailsPage implements OnInit {
     };
     console.log(newPlant);
     this.ApiService.updatePlant(newPlant).subscribe(
-      response => {console.log('Plant succesvol toegevoegd: ', response);
+      response => {console.log('Plant succesvol aangepast: ', response);
+      },
+      error => {
+        console.log('Er is een fout opgetreden: ', error);
+      }
+    );
+  }
+
+  deletePlant(plant: Plant): void {
+    console.log(this._id);
+    this.ApiService.deletePlant(this._id).subscribe(
+      response => {console.log('Plant succesvol verwijderd: ', response);
       },
       error => {
         console.log('Er is een fout opgetreden: ', error);
@@ -78,18 +89,21 @@ export class DetailsPage implements OnInit {
     if (id != null){
       this.ApiService.getPlantById(id).subscribe(plant => {
         this.plant = plant;
-        this._id = plant._id;
-        this.Id = plant.Id;
-        this.naam = plant.naam;
-        this.zaaitijd = plant.zaaitijd;
-        this.zaaitijdBuiten = plant.zaaitijdBuiten;
-        this.oogsttijd = plant.oogsttijd;
-        this.zaaienTotKiem = plant.zaaienTotKiem;
-        this.zaaienTotOogst = plant.zaaienTotOogst;
-        this.plantafstand = plant.plantafstand;
-        this.categorie = plant.categorie;
-        this.details = plant.details;
+        this._id = this.plant._id;
+        this.Id = this.plant.Id;
+        this.naam = this.plant.naam;
+        this.zaaitijd = this.plant.zaaitijd;
+        this.zaaitijdBuiten = this.plant.zaaitijdBuiten;
+        this.oogsttijd = this.plant.oogsttijd;
+        this.zaaienTotKiem = this.plant.zaaienTotKiem;
+        this.zaaienTotOogst = this.plant.zaaienTotOogst;
+        this.plantafstand = this.plant.plantafstand;
+        this.categorie = this.plant.categorie;
+        this.details = this.plant.details;
         this.linkUrl = this.plant.details;
+        console.log(this.plant);
+        console.log(this.zaaitijd)
+        console.log(this.plant.oogsttijd)
 
       });
     }

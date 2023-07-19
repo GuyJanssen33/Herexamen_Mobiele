@@ -22,6 +22,10 @@ const routes: Routes = [
         path: 'favorieten',
         loadChildren: () => import('../tab1/favorieten/favorieten.module').then(m => m.FavorietenPageModule)
       },
+      {
+        path: 'addplant',
+        loadChildren: () => import('../tab1/addplant/addplant.module').then(m => m.AddplantPageModule)
+      },
 
       {
         path: 'tab2',

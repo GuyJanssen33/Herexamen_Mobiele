@@ -11,7 +11,7 @@ import {mergeMap, Observable, of} from "rxjs";
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page  implements OnInit {
-
+  public isListLoaded: boolean = false;
   public newFavorite : any;
   public PlantList = this.ApiService.getPlant();
 
@@ -26,41 +26,7 @@ export class Tab1Page  implements OnInit {
   plant: any;
 
   isClicked: boolean = false;
-  constructor( public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
-    p => {
-      switch(p.categorie) {
-        case "Blad- en steelgewassen": {
-          this.BladList.push(p);
-          break;
-        }
-        case "Knol- en wortelgewassen": {
-          this.KnolList.push(p);
-          break;
-        }
-        case "Ui-achtigen": {
-          this.UiList.push(p);
-          break;
-        }
-        case "Koolsoorten": {
-          this.KoolList.push(p);
-          break;
-        }
-        case "Peulvruchten": {
-          this.PeulList.push(p);
-          break;
-        }
-        case "Gebleekte Gewassen": {
-          this.GebleekteList.push(p);
-          break;
-        }
-        default: {
-          this.VruchtList.push(p);
-          break;
-        }
-      }}));
-    console.log(this.BladList, "test", this.VruchtList);
-
-    }
+  constructor( public ApiService: ApiService) {}
 
   toggleClick() {
     this.isClicked = !this.isClicked;
@@ -71,8 +37,56 @@ export class Tab1Page  implements OnInit {
     console.log('ID:',id)
   }
 
+
+   ionViewDidLeave() {
+    this.isListLoaded = false;
+   }
+  ionViewWillEnter() {
+    if(!this.isListLoaded){
+      this.getListAndDivide();
+      this.isListLoaded = true;
+    }
+
+  }
+  getListAndDivide(){
+    this.PlantList.subscribe(plant => plant.forEach(
+      p => {
+        switch(p.categorie) {
+          case "Blad- en steelgewassen": {
+            this.BladList.push(p);
+            break;
+          }
+          case "Knol- en wortelgewassen": {
+            this.KnolList.push(p);
+            break;
+          }
+          case "Ui-achtigen": {
+            this.UiList.push(p);
+            break;
+          }
+          case "Koolsoorten": {
+            this.KoolList.push(p);
+            break;
+          }
+          case "Peulvruchten": {
+            this.PeulList.push(p);
+            break;
+          }
+          case "Gebleekte Gewassen": {
+            this.GebleekteList.push(p);
+            break;
+          }
+          default: {
+            this.VruchtList.push(p);
+            break;
+          }
+        }}));
+    console.log(this.BladList, "test", this.VruchtList);
+
+  }
   ngOnInit():void{
-    this.PlantList = this.ApiService.getPlant();
+
+
   }
 
 }

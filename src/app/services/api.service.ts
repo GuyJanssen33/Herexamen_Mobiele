@@ -29,4 +29,7 @@ export class ApiService {
   updatePlant(plant: Plant): Observable<Plant> {
     return this.httpClient.put<Plant>(`${this.#baseURL}/update/${plant._id}`, plant);
   }
+  deletePlant(id:string): Observable<Plant> {
+    return this.httpClient.delete<Plant>(`${this.#baseURL}/delete/${id}`);
+  }
 }
