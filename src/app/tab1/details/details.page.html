@@ -59,8 +59,8 @@
 
     <ion-item>
       <ion-label>Details (weblink):</ion-label>
-      <ion-input  >
-        <a *ngIf="'linkUrl'|| 'No link available'" [href]="linkUrl" target="_blank" [(ngModel)]="details">{{details}}</a>
+      <ion-input  [(ngModel)]="details">
+        <a *ngIf="'linkUrl'|| 'No link available'" [href]="linkUrl" target="_blank" >{{details}}</a>
       </ion-input>
     </ion-item>
 

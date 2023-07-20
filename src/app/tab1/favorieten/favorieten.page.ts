@@ -10,10 +10,10 @@ import {FavorietenService} from "../../services/favorieten.service"
   styleUrls: ['favorieten.page.scss'],
 })
 export class FavorietenPage implements OnInit {
-  public plant?:Plant | any;
-  public favorietenList = this.favorietenService.mijnFavorieten;
+  public plant?: Plant|any;
+  public favorietenLijst: Array<string> = [];
   public favorietePlanten: Array<Plant> = [];
-  public linkUrl: string|any= this.plant?.details
+  public id = this.activatedRoute.snapshot.paramMap.get('id');
   constructor(
               public ApiService: ApiService,
               public activatedRoute: ActivatedRoute,
@@ -21,43 +21,48 @@ export class FavorietenPage implements OnInit {
               public favorietenService: FavorietenService) {}
 
   ngOnInit(): void {
-    this.getList()
-   this.favorietenList.forEach((id => {this.getPlants(id)}))
+    this.getListFromService();
 
+    if (this.id!=null) {
+      this.putIdToList();
+    }
+
+    console.log(this.favorietenLijst);
+
+    if (this.favorietenLijst.length > 0) {
+      console.log("nu nog de volgende methoden");
+      this.getPlantsFromList()
+    }
   }
 
-getList(): void {
-  this.favorietenList = this.favorietenService.mijnFavorieten;
-}
-
-plantToList(): void {
-    if (this.favorietePlanten.includes(this.plant)) {
-      this.favorietePlanten.push(this.plant);
+getPlantsFromList(){
+    console.log("hier zijn we geraakt")
+  console.log(this.favorietenLijst.length);
+  this.favorietenLijst.forEach((id) => {
+      this.ApiService.getPlantById(id).subscribe((plant) => {
+        this.favorietePlanten.push(plant);
+        console.log(this.favorietePlanten)
+      });
     }
+  );
 }
-  getPlants(id:string): void {
+  putIdToList(){
+    console.log("nu gaan we de id toeveogen")
 
-    if (id != null){
-      this.ApiService.getPlantById(id).subscribe(plant => {
-        this.plant = plant;
-        this.plant._id = plant._id;
-        this.plant.Id = plant.Id;
-        this.plant.naam = plant.naam;
-        this.plant.zaaitijd = plant.zaaitijd;
-        this.plant.zaaitijdBuiten = plant.zaaitijdBuiten;
-        this.plant.oogsttijd = plant.oogsttijd;
-        this.plant.zaaienTotKiem = plant.zaaienTotKiem;
-        this.plant.zaaienTotOogst = plant.zaaienTotOogst;
-        this.plant.plantafstand = plant.plantafstand;
-        this.plant.categorie = plant.categorie;
-        this.plant.details = plant.details;
-        this.linkUrl = this.plant.details;
+    if (this.id!=null){
+      console.log(this.favorietenLijst)
+      this.favorietenLijst.push(this.id);
+      console.log(this.favorietenLijst)
+      this.favorietenService.saveList(this.favorietenLijst);
+    }
+  }
 
-          this.favorietePlanten.push(this.plant);
+  async getListFromService(){
+    await this.favorietenService.getList().then((result) => {
+      this.favorietenLijst = result;
+      console.log(this.favorietenLijst);
 
-        console.log (this.favorietePlanten);
+    });
+  }
 
-  });
-
-
-    }}}
+  }

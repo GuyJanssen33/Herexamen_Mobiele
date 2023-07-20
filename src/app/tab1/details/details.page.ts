@@ -44,6 +44,8 @@ export class DetailsPage implements OnInit {
     const id : string|any = this.plant?._id;
 
     this.favorietenservice.mijnFavorieten.push(id);
+    this.favorietenservice.saveList(this.favorietenservice.mijnFavorieten);
+
   }
 
   updatePlant(plant: Plant): void {

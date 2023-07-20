@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {PhotoService} from "../services/photo.service";
+import {Camera, CameraResultType} from "@capacitor/camera";
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+imageElement: any = {src: undefined}
+  constructor(public photoService: PhotoService) {}
 
-  constructor() {}
 
 }

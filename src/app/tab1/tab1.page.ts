@@ -13,19 +13,27 @@ import {mergeMap, Observable, of} from "rxjs";
 export class Tab1Page  implements OnInit {
   public isListLoaded: boolean = false;
   public newFavorite : any;
-  public PlantList = this.ApiService.getPlant();
+  public PlantList: Observable<Plant[]> = this.ApiService.getPlant();
 
   public BladList: Array<Plant> = [];
+  public isBladListLoaded: boolean = false;
   public KoolList: Array<Plant> = [];
+  public isKoolListLoaded: boolean = false;
   public PeulList: Array<Plant> = [];
+  public isPeulListLoaded: boolean = false;
   public KnolList: Array<Plant> = [];
+  public isKnolListLoaded: boolean = false;
   public UiList: Array<Plant> = [];
+  public isUiListLoaded: boolean = false;
   public GebleekteList: Array<Plant> = [];
+  public isGebleekteListLoaded: boolean = false;
   public VruchtList: Array<Plant> = [];
+  public isVruchtListLoaded: boolean = false;
   // Plant: Plant;
   plant: any;
 
   isClicked: boolean = false;
+
   constructor( public ApiService: ApiService) {}
 
   toggleClick() {
@@ -40,15 +48,30 @@ export class Tab1Page  implements OnInit {
 
    ionViewDidLeave() {
     this.isListLoaded = false;
+    this.isBladListLoaded = false;
+    this.isKoolListLoaded = false;
+    this.isPeulListLoaded = false;
+    this.isKnolListLoaded = false;
+    this.isUiListLoaded = false;
+    this.isGebleekteListLoaded = false;
+    this.isVruchtListLoaded = false;
    }
   ionViewWillEnter() {
     if(!this.isListLoaded){
       this.getListAndDivide();
       this.isListLoaded = true;
+      this.isBladListLoaded = true;
+      this.isKoolListLoaded = true;
+      this.isPeulListLoaded = true;
+      this.isKnolListLoaded = true;
+      this.isUiListLoaded = true;
+      this.isGebleekteListLoaded = true;
+      this.isVruchtListLoaded = true;
     }
 
   }
   getListAndDivide(){
+
     this.PlantList.subscribe(plant => plant.forEach(
       p => {
         switch(p.categorie) {
