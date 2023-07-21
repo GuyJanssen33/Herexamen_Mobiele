@@ -7,7 +7,7 @@ import {Plant} from "../Datatypes/Plant";
 @Injectable({
   providedIn: 'root'
 })
-export class FavorietenService implements OnInit {
+export class FavorietenService  {
   mijnFavorieten: string[] = [];
   listKey = 'mijnFavorieten';
 
@@ -24,9 +24,11 @@ export class FavorietenService implements OnInit {
     return [];
   }
 
-  async ngOnInit() {
+ /* async ngOnInit() {
     this.mijnFavorieten = await this.getList();
 
+  }*/
+  constructor() {
+    this.getList().then(x => this.mijnFavorieten = x)
   }
-  constructor() {}
 }

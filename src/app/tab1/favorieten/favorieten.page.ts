@@ -36,6 +36,14 @@ export class FavorietenPage implements OnInit {
       }
     });
   }
+  ionViewWillEnter(){
+    this.getListFromService().then(() => {
+
+      if (this.id != null) {
+        this.putIdToList();
+      }
+    });
+  }
 
   ionViewDidLeave() {
     this.favorietenService.saveList(this.favorietenLijst);

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'be.thomasmore.graduaten.moestuin_app',
-  appName: 'Moestuin_app',
+  appId: 'com.janssen.guy.moestuinapp',
+  appName: 'Moestuinapp',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
