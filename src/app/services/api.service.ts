@@ -32,4 +32,5 @@ export class ApiService {
   deletePlant(id:string): Observable<Plant> {
     return this.httpClient.delete<Plant>(`${this.#baseURL}/delete/${id}`);
   }
+
 }

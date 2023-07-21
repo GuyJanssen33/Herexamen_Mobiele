@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {Plugins} from '@capacitor/core';
 import {Preferences} from "@capacitor/preferences";
 import {Observable} from "rxjs";
@@ -7,7 +7,7 @@ import {Plant} from "../Datatypes/Plant";
 @Injectable({
   providedIn: 'root'
 })
-export class FavorietenService {
+export class FavorietenService implements OnInit {
   mijnFavorieten: string[] = [];
   listKey = 'mijnFavorieten';
 
@@ -22,6 +22,11 @@ export class FavorietenService {
       return JSON.parse(result.value);
     }
     return [];
+  }
+
+  async ngOnInit() {
+    this.mijnFavorieten = await this.getList();
+
   }
   constructor() {}
 }

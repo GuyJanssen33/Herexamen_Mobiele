@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'be.thomasmore.graduaten.moestuin_app',
   appName: 'Moestuin_app',
   webDir: 'www',
   bundledWebRuntime: false,

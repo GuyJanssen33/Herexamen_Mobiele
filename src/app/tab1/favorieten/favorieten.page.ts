@@ -15,10 +15,10 @@ export class FavorietenPage implements OnInit {
   public favorietePlanten: Array<Plant> = [];
   public id = this.activatedRoute.snapshot.paramMap.get('id');
   constructor(
-              public ApiService: ApiService,
-              public activatedRoute: ActivatedRoute,
-              public route:ActivatedRoute,
-              public favorietenService: FavorietenService) {}
+    public ApiService: ApiService,
+    public activatedRoute: ActivatedRoute,
+    public route:ActivatedRoute,
+    public favorietenService: FavorietenService) {}
 
   ngOnInit(): void {
     this.getListFromService();
@@ -35,17 +35,17 @@ export class FavorietenPage implements OnInit {
     }
   }
 
-getPlantsFromList(){
+  getPlantsFromList(){
     console.log("hier zijn we geraakt")
-  console.log(this.favorietenLijst.length);
-  this.favorietenLijst.forEach((id) => {
-      this.ApiService.getPlantById(id).subscribe((plant) => {
-        this.favorietePlanten.push(plant);
-        console.log(this.favorietePlanten)
-      });
-    }
-  );
-}
+    console.log(this.favorietenLijst.length);
+    this.favorietenLijst.forEach((id) => {
+        this.ApiService.getPlantById(id).subscribe((plant) => {
+          this.favorietePlanten.push(plant);
+          console.log(this.favorietePlanten)
+        });
+      }
+    );
+  }
   putIdToList(){
     console.log("nu gaan we de id toeveogen")
 
@@ -65,4 +65,4 @@ getPlantsFromList(){
     });
   }
 
-  }
+}

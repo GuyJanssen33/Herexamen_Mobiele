@@ -16,6 +16,7 @@ specifiers:
   '@angular/platform-browser': ^15.0.0
   '@angular/platform-browser-dynamic': ^15.0.0
   '@angular/router': ^15.0.0
+  '@capacitor/android': ^5.2.2
   '@capacitor/app': 4.1.1
   '@capacitor/camera': ^5.0.6
   '@capacitor/cli': 4.7.0
@@ -25,6 +26,7 @@ specifiers:
   '@capacitor/keyboard': 4.1.1
   '@capacitor/preferences': ^5.0.6
   '@capacitor/status-bar': 4.1.1
+  '@capacitor/storage': ^1.2.5
   '@ionic/angular': ^6.1.9
   '@ionic/angular-toolkit': ^6.0.0
   '@ionic/pwa-elements': ^3.2.1
@@ -59,6 +61,7 @@ dependencies:
   '@angular/platform-browser': 15.2.0_gvdsznzulkezfm6w67hlhkynfe
   '@angular/platform-browser-dynamic': 15.2.0_q3vtycdixm4mw4ocqkr6ifs2ty
   '@angular/router': 15.2.0_zuq5cr5g6oi7bacywswds55c6q
+  '@capacitor/android': 5.2.2_@capacitor+core@5.2.1
   '@capacitor/app': 4.1.1_@capacitor+core@5.2.1
   '@capacitor/camera': 5.0.6_@capacitor+core@5.2.1
   '@capacitor/core': 5.2.1
@@ -67,6 +70,7 @@ dependencies:
   '@capacitor/keyboard': 4.1.1_@capacitor+core@5.2.1
   '@capacitor/preferences': 5.0.6_@capacitor+core@5.2.1
   '@capacitor/status-bar': 4.1.1_@capacitor+core@5.2.1
+  '@capacitor/storage': 1.2.5_@capacitor+core@5.2.1
   '@ionic/angular': 6.5.6_xujixmtjhappjyebcxv7g75gsi
   '@ionic/pwa-elements': 3.2.1
   '@ionic/storage-angular': 4.0.0_rlouuhf3skgq5v2ddhr4bc7iny
@@ -1821,6 +1825,14 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
+  /@capacitor/android/5.2.2_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-2kx5C2lJ/DSwPWS7fKvextWhg4AK3SQvQnHgp8+WX6SDYgphBNlGUh45N/qBoMeVM7lqjANJFGQDCk0FjimlWQ==}
+    peerDependencies:
+      '@capacitor/core': ^5.2.0
+    dependencies:
+      '@capacitor/core': 5.2.1
+    dev: false
+
   /@capacitor/app/4.1.1_@capacitor+core@5.2.1:
     resolution: {integrity: sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==}
     peerDependencies:
@@ -1905,6 +1917,15 @@ packages:
     resolution: {integrity: sha512-3wosxMD1XuIFz88+c2GdVEHSJV6u7suOeKQjyWf3zf9eFr622Sg+udZqDbC0dtTWXw97BWyCjv3r1EYJw7XnIA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
+    dependencies:
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/storage/1.2.5_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-pWhnw4U7wN/zFV4lA4BLMypSufTktCbk548Yk4whSb0KAq3R0mLfSubRIHkGdcPqQWCsM6g/zUuszurhz6ncWQ==}
+    deprecated: package has been renamed to @capacitor/preferences
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
     dependencies:
       '@capacitor/core': 5.2.1
     dev: false
