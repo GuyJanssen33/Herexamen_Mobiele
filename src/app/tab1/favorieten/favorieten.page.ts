@@ -21,20 +21,25 @@ export class FavorietenPage implements OnInit {
     public favorietenService: FavorietenService) {}
 
   ngOnInit(): void {
-    this.getListFromService();
+    this.getListFromService().then(() => {
 
-    if (this.id!=null) {
-      this.putIdToList();
-    }
+      if (this.id != null) {
+        this.putIdToList();
+      }
 
-    console.log(this.favorietenLijst);
 
-    if (this.favorietenLijst.length > 0) {
-      console.log("nu nog de volgende methoden");
-      this.getPlantsFromList()
-    }
+      console.log(this.favorietenLijst);
+
+      if (this.favorietenLijst.length > 0) {
+        console.log("nu nog de volgende methoden");
+        this.getPlantsFromList()
+      }
+    });
   }
 
+  ionViewDidLeave() {
+    this.favorietenService.saveList(this.favorietenLijst);
+  }
   getPlantsFromList(){
     console.log("hier zijn we geraakt")
     console.log(this.favorietenLijst.length);
