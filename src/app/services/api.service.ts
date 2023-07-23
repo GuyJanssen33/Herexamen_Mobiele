@@ -8,8 +8,8 @@ import {Plant} from "../Datatypes/Plant";
 })
 export class ApiService {
 
-  /*readonly #apiKey = environment.theOneApiKey;*/
-  readonly #baseURL = 'https://api-production-6ac0.up.railway.app/moestuin';
+
+  readonly #baseURL = 'https://api-production-f861.up.railway.app/moestuin';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -18,7 +18,19 @@ export class ApiService {
     return this.httpClient.get<Plant[]>(`${this.#baseURL}`)
   }
 
-  getPlantById(id: number): Observable<Plant> {
+  getPlantById(id: string): Observable<Plant> {
     return  this.httpClient.get<Plant>(`${this.#baseURL}/${id}`);
   }
+
+  addPlant(plant: Plant): Observable<Plant> {
+    return this.httpClient.post<Plant>(`${this.#baseURL}/create`, plant);
+  }
+
+  updatePlant(plant: Plant): Observable<Plant> {
+    return this.httpClient.put<Plant>(`${this.#baseURL}/update/${plant._id}`, plant);
+  }
+  deletePlant(id:string): Observable<Plant> {
+    return this.httpClient.delete<Plant>(`${this.#baseURL}/delete/${id}`);
+  }
+
 }

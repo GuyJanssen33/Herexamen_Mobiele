@@ -22,6 +22,7 @@ export class PlantService {
 
 
   newPlant(
+    _id: string,
     Id: number,
     naam: string,
     zaaitijd: string,
@@ -35,6 +36,7 @@ export class PlantService {
   ): void {
     this.#plantList.push({
 
+     _id,
       Id,
       naam,
       zaaitijd,

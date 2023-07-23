@@ -4,11 +4,10 @@
     <ion-toolbar color="success">
       <ion-title class="HeaderTitle">Moestuin app</ion-title>
       <ion-buttons slot="primary">
-        <ion-button>
-          <ion-button [routerLink]="['plant']" routerLinkActive="active">
-            <ion-icon name="add-outline"></ion-icon>
+          <ion-button [routerLink]="['favorieten']" routerLinkActive="active">
+            <!--<ion-icon name="add-outline"></ion-icon>-->
+            <ion-label >Favorieten</ion-label>
           </ion-button>
-        </ion-button>
         <ion-button>
           <ion-icon name="person-outline" onclick="OpenLoginWindow"></ion-icon>
         </ion-button>
@@ -24,15 +23,12 @@
           <ion-label>Blad en steelgewassen</ion-label>
         </ion-item>
         <div slot="content">
-          <ion-list [inset]="true" *ngFor="let plant of BladList">
-            <ion-item >
+          <ion-list [inset]="true" *ngFor="let plant of BladList" >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
-                 <h2>{{plant.naam}}</h2>
+                <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
-
           </ion-list>
         </div>
       </ion-accordion>
@@ -42,14 +38,11 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of KnolList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
-
           </ion-list>
         </div>
       </ion-accordion>
@@ -59,12 +52,11 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of UiList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
+
             </ion-item>
           </ion-list>
         </div>
@@ -75,12 +67,10 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of KoolList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -91,12 +81,10 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of PeulList">
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -107,12 +95,10 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of GebleekteList" >
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
@@ -123,18 +109,17 @@
         </ion-item>
         <div slot="content">
           <ion-list [inset]="true" *ngFor="let plant of VruchtList" >
-            <ion-item >
+            <ion-item button [routerLink]="['details', plant._id]">
               <ion-label>
                 <h2>{{plant.naam}}</h2>
               </ion-label>
-              <ion-icon name="star" slot="end" [routerLink]="['favoriet/:Id']"
-                        color="warning"></ion-icon>
             </ion-item>
           </ion-list>
         </div>
       </ion-accordion>
 
     </ion-accordion-group>
+  <ion-button expand="block" [routerLink]="['addplant']">Plant toevoegen</ion-button>
   </ion-content>
 
 

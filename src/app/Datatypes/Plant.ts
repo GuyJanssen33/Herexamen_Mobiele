@@ -1,4 +1,5 @@
 export interface Plant {
+  _id:string;
   Id:number;
   naam: string;
   zaaitijd: string;
@@ -12,6 +13,10 @@ export interface Plant {
 }
 
 export interface PlantList {
+  Plant: Plant[];
+}
+
+export interface FavorietenList {
   Plant: Plant[];
 }
 

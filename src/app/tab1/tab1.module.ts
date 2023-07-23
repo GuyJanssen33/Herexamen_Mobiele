@@ -6,7 +6,8 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import {HttpClientModule} from '@angular/common/http';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-
+import {DetailsPageModule} from "./details/details.module";
+import {FavorietenPageModule} from "./favorieten/favorieten.module";
 @NgModule({
   imports: [
     IonicModule,
@@ -14,8 +15,13 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DetailsPageModule,
+    FavorietenPageModule,
+
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page
+    ],
+  entryComponents: []
 })
 export class Tab1PageModule {}

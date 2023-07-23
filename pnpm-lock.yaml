@@ -16,14 +16,21 @@ specifiers:
   '@angular/platform-browser': ^15.0.0
   '@angular/platform-browser-dynamic': ^15.0.0
   '@angular/router': ^15.0.0
+  '@capacitor/android': ^5.2.2
   '@capacitor/app': 4.1.1
+  '@capacitor/camera': ^5.0.6
   '@capacitor/cli': 4.7.0
-  '@capacitor/core': 4.7.0
+  '@capacitor/core': 5.2.1
+  '@capacitor/filesystem': ^5.1.0
   '@capacitor/haptics': 4.1.0
   '@capacitor/keyboard': 4.1.1
+  '@capacitor/preferences': ^5.0.6
   '@capacitor/status-bar': 4.1.1
+  '@capacitor/storage': ^1.2.5
   '@ionic/angular': ^6.1.9
   '@ionic/angular-toolkit': ^6.0.0
+  '@ionic/pwa-elements': ^3.2.1
+  '@ionic/storage-angular': ^4.0.0
   '@types/jasmine': ~4.0.0
   '@types/node': ^12.11.1
   '@typescript-eslint/eslint-plugin': 5.3.0
@@ -54,12 +61,19 @@ dependencies:
   '@angular/platform-browser': 15.2.0_gvdsznzulkezfm6w67hlhkynfe
   '@angular/platform-browser-dynamic': 15.2.0_q3vtycdixm4mw4ocqkr6ifs2ty
   '@angular/router': 15.2.0_zuq5cr5g6oi7bacywswds55c6q
-  '@capacitor/app': 4.1.1_@capacitor+core@4.7.0
-  '@capacitor/core': 4.7.0
-  '@capacitor/haptics': 4.1.0_@capacitor+core@4.7.0
-  '@capacitor/keyboard': 4.1.1_@capacitor+core@4.7.0
-  '@capacitor/status-bar': 4.1.1_@capacitor+core@4.7.0
+  '@capacitor/android': 5.2.2_@capacitor+core@5.2.1
+  '@capacitor/app': 4.1.1_@capacitor+core@5.2.1
+  '@capacitor/camera': 5.0.6_@capacitor+core@5.2.1
+  '@capacitor/core': 5.2.1
+  '@capacitor/filesystem': 5.1.0_@capacitor+core@5.2.1
+  '@capacitor/haptics': 4.1.0_@capacitor+core@5.2.1
+  '@capacitor/keyboard': 4.1.1_@capacitor+core@5.2.1
+  '@capacitor/preferences': 5.0.6_@capacitor+core@5.2.1
+  '@capacitor/status-bar': 4.1.1_@capacitor+core@5.2.1
+  '@capacitor/storage': 1.2.5_@capacitor+core@5.2.1
   '@ionic/angular': 6.5.6_xujixmtjhappjyebcxv7g75gsi
+  '@ionic/pwa-elements': 3.2.1
+  '@ionic/storage-angular': 4.0.0_rlouuhf3skgq5v2ddhr4bc7iny
   ionicons: 6.1.3
   rxjs: 7.5.7
   tslib: 2.5.0
@@ -1811,12 +1825,28 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@capacitor/app/4.1.1_@capacitor+core@4.7.0:
+  /@capacitor/android/5.2.2_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-2kx5C2lJ/DSwPWS7fKvextWhg4AK3SQvQnHgp8+WX6SDYgphBNlGUh45N/qBoMeVM7lqjANJFGQDCk0FjimlWQ==}
+    peerDependencies:
+      '@capacitor/core': ^5.2.0
+    dependencies:
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/app/4.1.1_@capacitor+core@5.2.1:
     resolution: {integrity: sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.7.0
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/camera/5.0.6_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-X9WhbFz3dGv58JyfoAFGk/KN0oacEA+ReZkRc+JMRef0GUDfzlqEhqY4kP0i9nKH2koOFNdq4Pmya/Wu3mQXMg==}
+    peerDependencies:
+      '@capacitor/core': ^5.0.0
+    dependencies:
+      '@capacitor/core': 5.2.1
     dev: false
 
   /@capacitor/cli/4.7.0:
@@ -1845,34 +1875,59 @@ packages:
       - supports-color
     dev: true
 
-  /@capacitor/core/4.7.0:
-    resolution: {integrity: sha512-LkjHnIoufojVjCZXogEbotN2utXxfo6TvpSgWaYndRPm/SrPFCWM8bPf/WNd8MozOkPFgcxlZnZlGHFGTeydWQ==}
+  /@capacitor/core/5.2.1:
+    resolution: {integrity: sha512-v7nzTQZj9l99Sp0v8C7Zq8QX6Cg5ljq7ASneWk/Hc5nBR5LOj/k3a+yEx/RoclWtkxJfs89Y5k+KJTFFQ6cLoA==}
     dependencies:
       tslib: 2.5.0
     dev: false
 
-  /@capacitor/haptics/4.1.0_@capacitor+core@4.7.0:
+  /@capacitor/filesystem/5.1.0_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-w0IaIvi/DIK1K4vOF8xnWavVcRRJ+auDE4HEh4iJ9wTdB+BrQSsQ6YMLVJn3rB6WlBG40CiBVuBc7+fl8y3zgw==}
+    peerDependencies:
+      '@capacitor/core': ^5.1.1
+    dependencies:
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/haptics/4.1.0_@capacitor+core@5.2.1:
     resolution: {integrity: sha512-gAIFy50e1VZPdokRFLkl8Y+yZYB3e4brd5yu9DRShbWbheruwU34TxtG5C1NANvq4mbXd3tMXzBi59Q5JFyTHA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.7.0
+      '@capacitor/core': 5.2.1
     dev: false
 
-  /@capacitor/keyboard/4.1.1_@capacitor+core@4.7.0:
+  /@capacitor/keyboard/4.1.1_@capacitor+core@5.2.1:
     resolution: {integrity: sha512-fdC7u2TeG4BqwC0LnPnhOdya31C4QKdhk/8pc5lxI9X5jyYAetMCN1kEkKa7KREw4DdzXotJt27B9BXxAza6og==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.7.0
+      '@capacitor/core': 5.2.1
     dev: false
 
-  /@capacitor/status-bar/4.1.1_@capacitor+core@4.7.0:
+  /@capacitor/preferences/5.0.6_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-aDe4wGTVSAIue6XXdUFgyz7SGszxK/Ptt/iWTydMpzc1PlZXw1XTTnciM+S+SLLNZFzXlkpXT3wMnh9t0DojUA==}
+    peerDependencies:
+      '@capacitor/core': ^5.0.0
+    dependencies:
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/status-bar/4.1.1_@capacitor+core@5.2.1:
     resolution: {integrity: sha512-3wosxMD1XuIFz88+c2GdVEHSJV6u7suOeKQjyWf3zf9eFr622Sg+udZqDbC0dtTWXw97BWyCjv3r1EYJw7XnIA==}
     peerDependencies:
       '@capacitor/core': ^4.0.0
     dependencies:
-      '@capacitor/core': 4.7.0
+      '@capacitor/core': 5.2.1
+    dev: false
+
+  /@capacitor/storage/1.2.5_@capacitor+core@5.2.1:
+    resolution: {integrity: sha512-pWhnw4U7wN/zFV4lA4BLMypSufTktCbk548Yk4whSb0KAq3R0mLfSubRIHkGdcPqQWCsM6g/zUuszurhz6ncWQ==}
+    deprecated: package has been renamed to @capacitor/preferences
+    peerDependencies:
+      '@capacitor/core': ^3.0.0
+    dependencies:
+      '@capacitor/core': 5.2.1
     dev: false
 
   /@colors/colors/1.5.0:
@@ -2166,6 +2221,29 @@ packages:
       '@stencil/core': 2.22.2
       ionicons: 6.1.3
       tslib: 2.5.0
+    dev: false
+
+  /@ionic/pwa-elements/3.2.1:
+    resolution: {integrity: sha512-JQjCNcFPtF9OaREoI+gPs/VodieOcSIFa48owENY4pR6Ql/29kssRjmByMNcqbeeKr8Cp0jxV9EGF6pCQugKHg==}
+    engines: {node: '>=16.0.0', npm: '>=8.0.0'}
+    dev: false
+
+  /@ionic/storage-angular/4.0.0_rlouuhf3skgq5v2ddhr4bc7iny:
+    resolution: {integrity: sha512-FeSmCMCm1bMRfu5TFSqLtjdfEo/dLLUhLIrPmbhSYomVZdV/dNn4mBZv9SabyxSqn4bF31hw40y+4buhG+durQ==}
+    peerDependencies:
+      '@angular/core': '*'
+      rxjs: '*'
+    dependencies:
+      '@angular/core': 15.2.0_rxjs@7.5.7+zone.js@0.11.8
+      '@ionic/storage': 4.0.0
+      rxjs: 7.5.7
+      tslib: 2.5.0
+    dev: false
+
+  /@ionic/storage/4.0.0:
+    resolution: {integrity: sha512-3N21P19Xk6cICLnSXZ3ilRqbSXAGSFeIF3HNqz+1kARcm0UFT/vwmZreaXtFyq437vvEWOfJ2enlj3JHLKS0FA==}
+    dependencies:
+      localforage: 1.10.0
     dev: false
 
   /@ionic/utils-array/2.1.5:
@@ -5235,6 +5313,10 @@ packages:
     dev: true
     optional: true
 
+  /immediate/3.0.6:
+    resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
+    dev: false
+
   /immutable/4.2.4:
     resolution: {integrity: sha512-WDxL3Hheb1JkRN3sQkyujNlL/xRjAo3rJtaU5xeufUauG66JdMr32bLj4gF+vWl84DIA3Zxw7tiAjneYzRRw+w==}
     dev: true
@@ -5900,6 +5982,12 @@ packages:
       webpack-sources: 3.2.3
     dev: true
 
+  /lie/3.1.1:
+    resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
+    dependencies:
+      immediate: 3.0.6
+    dev: false
+
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
@@ -5932,6 +6020,12 @@ packages:
     resolution: {integrity: sha512-ZvFw1KWS3GVyYBYb7qkmRM/WwL2TQQBxgCK62rlvm4WpVQ23Nb4tYjApUlfjrEGvOs7KHEsmyUn75OHZrJMWPw==}
     engines: {node: '>= 12.13.0'}
     dev: true
+
+  /localforage/1.10.0:
+    resolution: {integrity: sha512-14/H1aX7hzBBmmh7sGPd+AOMkkIrHM3Z1PAyGgZigA1H1p5O5ANnMyWzvpAETtG68/dC4pC0ncy3+PPGzXZHPg==}
+    dependencies:
+      lie: 3.1.1
+    dev: false
 
   /locate-path/2.0.0:
     resolution: {integrity: sha512-NCI2kiDkyR7VeEKm27Kda/iQHyKJe1Bu0FlTbYp3CqJu+9IFe9bLyAjMxf5ZDDbEg+iMPzB5zYyUTSm8wVTKmA==}

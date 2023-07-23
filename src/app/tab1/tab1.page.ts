@@ -3,100 +3,113 @@ import {Plant} from "../Datatypes/Plant";
 import {ApiService} from "../services/api.service";
 import {mergeMap, Observable, of} from "rxjs";
 
+
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page  implements OnInit {
-
-
-
-//   get PeulList(): Array<Plant> {
-//     return this._PeulList;
-//   }
-//
-//   set PeulList(value: Array<Plant>) {
-//     this._PeulList = value;
-//   }
-//
-//   get KoolList(): Array<Plant> {
-//     return this._KoolList;
-//   }
-//
-//   set KoolList(value: Array<Plant>) {
-//     this._KoolList = value;
-//   }
-//
-//
-//   get BladList(): Array<Plant> {
-//     return this._BladList;
-//   }
-//
-//   set BladList(value: Array<Plant>) {
-//     this._BladList = value;
-//   }
-//   get KnolList() : Array<Plant> {
-//     return this._KnolList;
-//   }
-//
-//   set KnolList(value: Array<Plant>) {
-//     this._KnolList = value;
-//   }
-//
-// get UiList() : Array<Plant>{
-//     return this._UiList
-// }
-//
-// set UiList(value: Array<Plant>){
-//     this._UiList = value;
-// }
-  public PlantList = this.ApiService.getPlant();
+  public isListLoaded: boolean = false;
+  public newFavorite : any;
+  public PlantList: Observable<Plant[]> = this.ApiService.getPlant();
 
   public BladList: Array<Plant> = [];
+  public isBladListLoaded: boolean = false;
   public KoolList: Array<Plant> = [];
+  public isKoolListLoaded: boolean = false;
   public PeulList: Array<Plant> = [];
+  public isPeulListLoaded: boolean = false;
   public KnolList: Array<Plant> = [];
+  public isKnolListLoaded: boolean = false;
   public UiList: Array<Plant> = [];
+  public isUiListLoaded: boolean = false;
   public GebleekteList: Array<Plant> = [];
+  public isGebleekteListLoaded: boolean = false;
   public VruchtList: Array<Plant> = [];
+  public isVruchtListLoaded: boolean = false;
   // Plant: Plant;
   plant: any;
-  constructor( public ApiService: ApiService) {this.PlantList.subscribe(plant => plant.forEach(
-    p => {
-      switch(p.categorie) {
-        case "Blad- en steelgewassen": {
-          this.BladList.push(p);
-          break;
-        }
-        case "Knol- en wortelgewassen": {
-          this.KnolList.push(p);
-          break;
-        }
-        case "Ui-achtigen": {
-          this.UiList.push(p);
-          break;
-        }
-        case "Koolsoorten": {
-          this.KoolList.push(p);
-          break;
-        }
-        case "Peulvruchten": {
-          this.PeulList.push(p);
-          break;
-        }
-        case "Gebleekte Gewassen": {
-          this.GebleekteList.push(p);
-          break;
-        }
-        default: {
-          this.VruchtList.push(p);
-          break;
-        }
-      }}));
-    console.log(this.BladList, "test", this.VruchtList);
+
+  isClicked: boolean = false;
+
+  constructor( public ApiService: ApiService) {}
+
+  toggleClick() {
+    this.isClicked = !this.isClicked;
+  }
+  sendId(_id:string) {
+    console.log(_id)
+    const id: string =_id
+    console.log('ID:',id)
+  }
+
+
+   ionViewDidLeave() {
+    this.isListLoaded = false;
+    this.isBladListLoaded = false;
+    this.isKoolListLoaded = false;
+    this.isPeulListLoaded = false;
+    this.isKnolListLoaded = false;
+    this.isUiListLoaded = false;
+    this.isGebleekteListLoaded = false;
+    this.isVruchtListLoaded = false;
+   }
+  ionViewWillEnter() {
+    if(!this.isListLoaded){
+      this.getListAndDivide();
+      this.isListLoaded = true;
+      this.isBladListLoaded = true;
+      this.isKoolListLoaded = true;
+      this.isPeulListLoaded = true;
+      this.isKnolListLoaded = true;
+      this.isUiListLoaded = true;
+      this.isGebleekteListLoaded = true;
+      this.isVruchtListLoaded = true;
     }
 
-  ngOnInit():void{}
+  }
+  getListAndDivide(){
+
+    this.PlantList.subscribe(plant => plant.forEach(
+      p => {
+        switch(p.categorie) {
+          case "Blad- en steelgewassen": {
+            this.BladList.push(p);
+            break;
+          }
+          case "Knol- en wortelgewassen": {
+            this.KnolList.push(p);
+            break;
+          }
+          case "Ui-achtigen": {
+            this.UiList.push(p);
+            break;
+          }
+          case "Koolsoorten": {
+            this.KoolList.push(p);
+            break;
+          }
+          case "Peulvruchten": {
+            this.PeulList.push(p);
+            break;
+          }
+          case "Gebleekte Gewassen": {
+            this.GebleekteList.push(p);
+            break;
+          }
+          default: {
+            this.VruchtList.push(p);
+            break;
+          }
+        }}));
+    console.log(this.BladList, "test", this.VruchtList);
+
+  }
+  ngOnInit():void{
+
+
+  }
 
 }
