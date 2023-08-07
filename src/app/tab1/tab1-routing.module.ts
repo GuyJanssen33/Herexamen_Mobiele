@@ -7,6 +7,9 @@ import {FavorietenPageModule} from "./favorieten/favorieten.module";
 import {FavorietenPage} from "./favorieten/favorieten.page";
 import {AddplantPageModule} from "./addplant/addplant.module";
 import {AddplantPage} from "./addplant/addplant.page";
+import {redirectUnauthorizedTo, AuthGuard} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const routes: Routes = [
   {
     path: '',
@@ -28,21 +31,29 @@ const routes: Routes = [
   {
     path: 'favorieten',
     component: FavorietenPage,
-    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule)
+    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },{
     path: 'favorieten/:id',
     component: FavorietenPage,
-    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule)
+    loadChildren: () => import('./favorieten/favorieten.module').then( m => m.FavorietenPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'addplant',
     component: AddplantPage,
-    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule)
+    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'addplant/:id',
     component: AddplantPage,
-    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule)
+    loadChildren: () => import('./addplant/addplant.module').then( m => m.AddplantPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
 
 ];

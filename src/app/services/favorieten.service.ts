@@ -16,6 +16,20 @@ export class FavorietenService  {
     Preferences.set({key: this.listKey, value:liststring})
   }
 
+  async removePlant(id: string): Promise<any> {
+    const index = this.mijnFavorieten.indexOf(id);
+
+    if (index !== -1) {
+      this.mijnFavorieten.splice(index, 1);
+      console.log(index)
+      this.saveList(this.mijnFavorieten)
+      console.log('controle lijst die is opgeslagen')
+      console.log(this.mijnFavorieten)
+      console.log('removed successfully')
+    }
+
+  return[]
+  }
   async getList(): Promise<any[]> {
     const result = await Preferences.get({ key: this.listKey });
     if (result.value) {
