@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Plant} from "../../Datatypes/Plant";
 import {ApiService} from "../../services/api.service";
 import {FavorietenService} from "../../services/favorieten.service"
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tab1-favorieten',
@@ -18,7 +19,9 @@ export class FavorietenPage implements OnInit {
     public ApiService: ApiService,
     public activatedRoute: ActivatedRoute,
     public route:ActivatedRoute,
-    public favorietenService: FavorietenService) {}
+    public favorietenService: FavorietenService,
+    private router: Router,
+    public location: Location) {}
 
   ngOnInit(): void {
     this.getListFromService().then(() => {
@@ -34,6 +37,44 @@ export class FavorietenPage implements OnInit {
         console.log("nu nog de volgende methoden");
         this.getPlantsFromList()
       }
+    });
+  }
+
+   removeItem(item: string): void{
+    console.log("we gaan nu de plant verwijderen");
+    this.favorietenService.removePlant(item);
+    this.favorietePlanten = []
+    this.getListFromService().then(() => {
+
+      if (this.id != null) {
+        this.putIdToList();
+      }
+
+
+      console.log(this.favorietenLijst);
+
+      if (this.favorietenLijst.length > 0) {
+        console.log("we zullen zien");
+        this.getPlantsFromList()
+      }
+    });;
+     /*this.getPlantsFromList();*/
+    /*this.refreshPage();*/
+     /*this.getListFromService();*/
+     /*this.location.back();*/
+
+     /*const index = this.favorietePlanten.indexOf(id);
+
+     if (index !== -1) {
+       this.favorietePlanten.splice(index, 1);
+       this.favorietenService.saveList(this.favorietePlanten)
+     }*/
+  }
+
+  private refreshPage(): void {
+    console.log("pagina word gerefreshed");
+    this.router.navigateByUrl('/favorieten', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/favorieten']);
     });
   }
   ionViewWillEnter(){

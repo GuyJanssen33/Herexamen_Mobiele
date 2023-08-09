@@ -48,13 +48,23 @@ export class Tab1Page  implements OnInit {
 
    ionViewDidLeave() {
     this.isListLoaded = false;
-    this.isBladListLoaded = false;
+    /*this.isBladListLoaded = false;
     this.isKoolListLoaded = false;
     this.isPeulListLoaded = false;
     this.isKnolListLoaded = false;
     this.isUiListLoaded = false;
     this.isGebleekteListLoaded = false;
     this.isVruchtListLoaded = false;
+*/
+
+     this.BladList = [];
+     this.KoolList = [];
+     this.PeulList = [];
+     this.KnolList = [];
+     this.UiList = [];
+     this.GebleekteList = [];
+     this.VruchtList = [];
+
    }
   ionViewWillEnter() {
     if(!this.isListLoaded){
