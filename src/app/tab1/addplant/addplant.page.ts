@@ -5,6 +5,7 @@ import {Plant} from "../../Datatypes/Plant";
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import {FavorietenService} from "../../services/favorieten.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-addplant',
@@ -99,4 +100,6 @@ export class AddplantPage implements OnInit {
 
     }
   }
+
+  protected readonly AuthService = AuthService;
 }

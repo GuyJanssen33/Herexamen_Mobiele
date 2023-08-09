@@ -4,13 +4,11 @@
     <ion-toolbar color="success">
       <ion-title class="HeaderTitle">Moestuin app</ion-title>
       <ion-buttons slot="primary">
-          <ion-button [routerLink]="['favorieten']" routerLinkActive="active">
+          <ion-button [routerLink]="['favorieten']" routerLinkActive="active" (click)="AuthService.url = ['/tabs', 'tab1', 'favorieten']">
             <!--<ion-icon name="add-outline"></ion-icon>-->
             <ion-label >Favorieten</ion-label>
           </ion-button>
-        <ion-button>
-          <ion-icon name="person-outline" onclick="OpenLoginWindow"></ion-icon>
-        </ion-button>
+
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -119,7 +117,7 @@
       </ion-accordion>
 
     </ion-accordion-group>
-  <ion-button expand="block" [routerLink]="['addplant']">Plant toevoegen</ion-button>
+  <ion-button expand="block" [routerLink]="['addplant']" (click)="AuthService.url = ['/tabs', 'tab1', 'addplant']">Plant toevoegen</ion-button>
   </ion-content>
 
 

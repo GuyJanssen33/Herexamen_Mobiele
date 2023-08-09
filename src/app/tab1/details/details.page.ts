@@ -5,6 +5,7 @@ import {Plant} from "../../Datatypes/Plant";
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import {FavorietenService} from "../../services/favorieten.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-tab1-details',
@@ -113,4 +114,5 @@ export class DetailsPage implements OnInit {
   }
 
 
+  protected readonly AuthService = AuthService;
 }

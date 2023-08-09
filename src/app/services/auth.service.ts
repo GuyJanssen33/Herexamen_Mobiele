@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {FirebaseAuthentication} from '@capacitor-firebase/authentication';
 import {Router} from '@angular/router';
-import {Auth, signInWithCredential, signOut, Unsubscribe} from '@angular/fire/auth';
-import {updateProfile, GoogleAuthProvider, PhoneAuthProvider, User} from 'firebase/auth';
+import {Auth, getAuth, signInWithCredential, signInWithPopup, signOut, Unsubscribe} from '@angular/fire/auth';
+import {updateProfile, GoogleAuthProvider, PhoneAuthProvider, User, GithubAuthProvider} from 'firebase/auth';
 import {Capacitor} from '@capacitor/core';
 import {BehaviorSubject} from 'rxjs';
 
+
+const provider = new GithubAuthProvider();
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +16,9 @@ export class AuthService {
   public currentUser: BehaviorSubject<null | User> = new BehaviorSubject<null | User>(null);
   #verificationId?: string;
   #authUnsubscribe: Unsubscribe;
+  public static url: undefined | any;
+  private afAuth: any;
+
 
   constructor(private auth: Auth, private router: Router) {
     this.#authUnsubscribe = this.auth.onAuthStateChanged(user => this.setCurrentUser(user));
@@ -65,6 +70,31 @@ export class AuthService {
     }
   }
 
+  async signInWithGithub(): Promise<void> {
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        if (credential !== null) {
+          const token = credential.accessToken;
+        }
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GithubAuthProvider.credentialFromError(error);
+      // ...
+    });
+  }
+
   /**
    * The login process for a phone is seperated in 2 part.
    *  1. A Verification code is send to the user. <-- This method.
@@ -112,10 +142,15 @@ export class AuthService {
    */
   private async setCurrentUser(user: User | null): Promise<void> {
     this.currentUser.next(user);
-    if (this.currentUser.value) {
-      await this.router.navigate(['/']);
-    } else {
-      await this.router.navigate(['/login']);
+    if (this.currentUser.value && AuthService.url) {
+      await this.router.navigate(AuthService.url)
+      AuthService.url = undefined
+
+      /*if (this.currentUser.value) {
+        await this.router.navigate(['/']);
+      } else {
+        await this.router.navigate(['/login']);
+      }*/
     }
   }
 }

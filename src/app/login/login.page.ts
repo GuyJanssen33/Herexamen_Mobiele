@@ -3,6 +3,8 @@ import {PhoneVerificationComponent} from './phone-verification/phone-verificatio
 import {Capacitor} from '@capacitor/core';
 import {AuthService} from '../services/auth.service';
 import {ModalController} from '@ionic/angular';
+import firebase from "firebase/compat";
+
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,7 @@ import {ModalController} from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   isNative = Capacitor.isNativePlatform();
+  private afAuth: any;
 
   constructor(public authService: AuthService, private modalController: ModalController) { }
 
@@ -20,6 +23,7 @@ export class LoginPage implements OnInit {
     });
     return await modal.present();
   }
+
 
   ngOnInit() {
   }

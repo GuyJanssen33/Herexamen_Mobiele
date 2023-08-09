@@ -9,7 +9,7 @@ import {AddplantPageModule} from "./addplant/addplant.module";
 import {AddplantPage} from "./addplant/addplant.page";
 import {redirectUnauthorizedTo, AuthGuard} from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/login']);
 const routes: Routes = [
   {
     path: '',

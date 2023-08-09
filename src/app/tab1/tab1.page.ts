@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Plant} from "../Datatypes/Plant";
 import {ApiService} from "../services/api.service";
 import {mergeMap, Observable, of} from "rxjs";
+import {AuthService} from "../services/auth.service";
 
 
 
@@ -118,8 +119,8 @@ export class Tab1Page  implements OnInit {
 
   }
   ngOnInit():void{
-
-
+    this.getListAndDivide();
   }
 
+  protected readonly AuthService = AuthService;
 }
